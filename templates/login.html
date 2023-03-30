@@ -1,0 +1,42 @@
+{% extends 'comp/home_comp.html'%}
+{% load static %}
+{% block title%} Connexion {% endblock %}
+
+{% block content%}
+<div style = "display: flex; justify-content: center; align-content: center; width: 100%; align-items: center; height: 100vh; " class="form_wrapper">
+  
+  
+  <div style = "display: flex; justify-content: center; align-content: center;" class="all">
+    <img style="margin: 0 20px;" src={% static 'footages/signup-image.jpg' %} alt="">
+    <form method="POST">
+      {% if messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+            {% for message in messages %}
+              {{ message }}
+            {% endfor %}
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endif %}
+        {% csrf_token %}
+        
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input name="email" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>        
+    </form>
+  </div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,242 @@
+{% extends 'comp/home_comp.html'%}
+{% block title%} {{ title }}{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+    	body{
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;    
+}
+.main-body {
+    padding: 15px;
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-top:50px ;
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+
+.card {
+    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: 1rem;
+}
+
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.5rem 1.5rem;
+}
+.avatar-text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+}
+
+.avatar {
+    width: 3rem;
+    height: 3rem;
+}
+.rounded-3 {
+    border-radius: 0.5rem!important;
+}
+.mb-2 {
+    margin-bottom: 0.5rem!important;
+}
+.me-4 {
+    margin-right: 1.5rem!important;
+}
+    </style>
+
+
+<div class="container">
+<div class="main-body">
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href={% url 'home'%}>d'accueil</a></li>
+<li class="breadcrumb-item"><a href="javascript:void(0)">l'utilisateur</a></li>
+<li class="breadcrumb-item active" aria-current="page">Profil de l'utilisateur</li>
+</ol>
+</nav>
+
+<div class="row gutters-sm">
+<div class="col-md-4 mb-3">
+<div class="card">
+<div class="card-body">
+<div class="d-flex flex-column align-items-center text-center">
+    {% if user.cv %}
+    <img src="{{ user.cv.url }}" alt="Admin" class="rounded-circle" width="150">
+    {% else %}
+    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150" >
+    {% endif %}
+<div class="mt-3">
+<h4>{{ first_name }} {{ last_name }}</h4>
+<p class="text-secondary mb-1">{{ email }}</p>
+<p class="text-muted font-size-sm">Supervisor</p>
+</div>
+</div>
+</div>
+</div>
+<div class="card mt-3">
+<ul class="list-group list-group-flush">
+<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
+<span class="text-secondary">Vérifié</span>
+</li>
+<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
+<span class="text-secondary">Vérifié</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card mb-3">
+<div class="card-body">
+<div class="row">
+<div class="col-sm-3">
+<h6 class="mb-0">Nom et prénom</h6>
+</div>
+<div class="col-sm-9 text-secondary">
+    {{ first_name }} {{ last_name }}
+</div>
+</div>
+<hr>
+<div class="row">
+<div class="col-sm-3">
+<h6 class="mb-0">E-mail</h6>
+</div>
+<div class="col-sm-9 text-secondary">
+<a href="#" class="__cf_email__" >{{ email }}</a>
+</div>
+</div>
+</div>
+</div>
+
+<div id="card_ticket" class="card mb-3">
+    <div class="card-body">
+    <div class="d-flex flex-column flex-lg-row">
+    <span class="avatar avatar-text rounded-3 me-4 mb-2">FD</span>
+    <div class="row flex-fill">
+    <div class="col-sm-5">
+    <h4 class="h5">Fête caritative pour les enfants</h4>
+    <span class="badge bg-secondary">Samedi</span> <span class="badge bg-success">10:00 / 12:00</span>
+    </div>
+    <div class="col-sm-4 py-2">
+    <span class="badge bg-secondary">Supervisors</span>
+    <span class="badge bg-secondary">Étudiants</span>
+    </div>
+    <div class="col-sm-3 text-lg-end">
+    <button onclick="rejoindre()" style="border: none;" href="#" id="rejoindre" class="btn btn-primary stretched-link">Rejoindre</button style="border: none;">
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>   
+</div>
+</div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+
+<script>
+   card_ticket = document.querySelector('#card_ticket');
+rejoindre_b = document.querySelector('#rejoindre');
+
+function rejoindre() {
+
+  rejoindre_b.disabled = true;
+  rejoindre_b.style.backgroundColor = 'gray';
+  rejoindre_b.style.border = 'none';
+  rejoindre_b.style.outline = 'none';
+  card_ticket.style.backgroundColor = 'gray';
+
+  // Add cookie to store state
+  localStorage.setItem('rejoindreButtonState', 'disabled');
+  localStorage.setItem('cardTicketColor', 'gray');
+}
+
+// Check for cookies on page load
+window.onload = function() {
+  const rejoindreState = localStorage.getItem('rejoindreButtonState');
+  const cardTicketColor = localStorage.getItem('cardTicketColor');
+
+  if (rejoindreState && rejoindreState === 'disabled') {
+    rejoindre_b.disabled = true;
+    rejoindre_b.style.backgroundColor = 'gray';
+    rejoindre_b.style.border = 'none';
+    rejoindre_b.style.outline = 'none';
+  }
+
+  if (cardTicketColor && cardTicketColor === 'gray') {
+    card_ticket.style.backgroundColor = 'gray';
+  }
+};
+
+</script>
+{% endblock %}

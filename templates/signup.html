@@ -1,0 +1,134 @@
+{% extends 'comp/home_comp.html'%}
+{% load static %}
+<style>
+
+</style>
+{% block title%} S'inscrire {% endblock %}
+{% block content %}
+    <div class="container_form" style="width: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <h3 style="margin-top:90px ;">Inscription</h3>
+        <div class="wrapper_for_form" style="display: flex;width: 100%; align-items: center;justify-content: center;">
+            <img src={% static 'footages/signin-image.jpg' %} alt="">
+
+
+                <form id="big_form"  method="POST" enctype="multipart/form-data">
+                    <div id="error_alert" style="display: none;" class="alert alert-warning" role="alert">le formulaire n'est pas rempli</div>
+                    {% csrf_token %}
+                    <div id="form_1" class="form1">
+                        <div class="row">
+                            <div class="col">
+                              <div class="form-outline">
+                                <label style="margin-top: 5px;" class="form-label" for="form3Example1">Prenom</label>
+                                <input type="text" id="form3Example1" class="form-control" name="first_name" />
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="form-outline">
+                                <label style="margin-top: 5px;" class="form-label" for="form3Example2">Nom</label>
+                                <input type="text" id="form3Example2" class="form-control" name="last_name"/>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Email input -->
+                            <div class="form-outline">
+                                <label style="margin-top: 5px;" class="form-label" for="form3Example3">Adresse e-mail</label>
+                                <input id="email" type="email" id="form3Example3" class="form-control" name="email"/>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline">
+                                <label style="margin-top: 5px;" class="form-label" for="form3Example4">Mot de passe</label>
+                                <input  id="pass1" type="password" id="form3Example4" class="form-control" name="password"/>
+                            </div>
+                            <div class="form-outline ">
+                                <label style="margin-top: 5px;" class="form-label" for="form3Example4">Confirmation Mot de passe</label>
+                                <input id="pass2" style="margin-bottom: 25px;"type="password" id="form3Example4" class="form-control" name="password1"/>
+                            </div>
+                            <a id="next_1" class="btn btn-primary btn-block" style="width: 100%;">Suivant</a>
+                    </div>
+                    <div style="display: none;" id="form_2" class="form2">
+                        <div class="form-check">
+                            <input id="superviseur" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">Supervisor</label>
+                          </div>
+                          <div class="form-check">
+                            <input id="student"class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                            <label class="form-check-label" for="flexRadioDefault2">Etudiant</label>
+                          </div>
+                          <div style="margin: 10px 0 ;" class="profile_uploader">
+                            <label class="form-label" for="customFile">choisissez une photo pour votre profil</label>
+                            <input name="cv" type="file" class="form-control" id="cv" />
+                            </div> 
+                            <div style="display: flex; justify-content: space-between;" class="buttons_form">
+                                <button id="back_1" type="button" class="btn btn-primary">Précédent</button>
+                                <button id="next_2" type="button" class="btn btn-primary">Suivant</button>
+                            </div>
+                        </div>
+                        <div style=" display: none; flex-direction: column; justify-content: center; align-items: center;" id="form_3" class="form3">
+                            <p>Ajoutez votre média social</p>
+                            <button type="button"  class="face_button" >
+                                <i style="margin:0 5px; color: white;" class="fa-brands fa-facebook-f"></i>
+                                <p style="margin-bottom:0;" class="add_fb_text" >Ajouter Votre Facebook </p></button>
+                            <button type="button"  class="insta_button" >
+                                <i style="margin:0 5px; color: white;" class="fa-brands fa-instagram"></i>
+                                <p style="margin-bottom:0;" class="add_insta_text">Ajouter Votre Instagram</p></button>
+                            <div  class="facebook_pop">
+                                <div class="exit_button">
+                                    <i id="exit_b" class="fa-solid fa-xmark"></i>
+                                </div>
+                                
+                                <div style="width: 100%; display: flex; justify-content: center;" class="fb_img">
+                                <img style="text-align: center; width: 40%;" src={% static 'footages/fb.png' %}>
+                        
+                                </div>
+                                <p style="margin-bottom: 10px; font-family:Rubik ; width: 100%; text-align: center;">
+                                    Avec Facebook, partagez et restez en contact avec votre entourage.
+                                </p>
+                                <div class="messages_fb">
+                                    le formulaire n'est pas rempli
+                                </div>
+                                <input class="fb_pass_filed"  autofocus placeholder="Adresse e-mail ou numéro de téléphone" type="text" id="facebook_username" name="facebook_username">
+                                
+                                
+                                <input placeholder="Mot de passe" class="fb_pass_filed" type="password" id="facebook_password" name="facebook_password">
+                                
+                                <input id="fb_submit"value="Se connecter" type="button" style="font-family:Rubik ; cursor: pointer; background-color: #1877f2; border: none; border-radius: 6px; font-size: 18px; line-height: 48px; padding: 0 16px; width: 100%; text-align: center; color: white; font-weight: 500; " ></input>
+                                
+                            </div>
+                        
+                        
+                            <div class="instagram_pop">
+                                <div class="exit_button_insta">
+                                    <i id="exit_b_insta" class="fa-solid fa-xmark"></i>
+                                </div>
+                                
+                                <div style="width: 100%; display: flex; justify-content: center;" class="insta_img">
+                                    <img style="text-align: center; width: 40%; margin: 10px 0;" src={% static '/footages/insta.png' %} >
+                                </div>
+                        
+                                <p style="margin-bottom: 10px; font-family:Rubik ; width: 100%; text-align: center;">
+                                    Avec Instagram, partagez et restez en contact avec votre entourage.
+                                </p>
+                        
+                                <div class="messages_insta">
+                                    le formulaire n'est pas rempli
+                                </div>
+                        
+                                <input class="insta_pass_filed"  autofocus placeholder="Adresse e-mail ou numéro de téléphone" type="text" id="instagram_username" name="instagram_username">
+                                
+                                <input placeholder="Mot de passe" class="insta_pass_filed" type="password" id="instagram_password" name="instagram_password">
+                                
+                                <input id="insta_submit" value="Se connecter" type="button" style="font-family:Rubik ; cursor: pointer; background-color: #1877f2; border: none; border-radius: 6px; font-size: 18px; line-height: 48px; padding: 0 16px; width: 100%; text-align: center; color: white; font-weight: 500; margin: 5px 0; " ></input>
+                                
+                            </div>
+                            <div style="width: 75%; display: flex; justify-content: space-between;" class="buttons_form">
+                                <button id="back_2" type="button" class="btn btn-primary">Précédent</button>
+                                <button id="comeplete" type="button" class="btn btn-success">Success</button>
+                            </div>
+                        
+                        
+                    </div>
+                </form>
+        </div>
+    </div>
+{% endblock %}
